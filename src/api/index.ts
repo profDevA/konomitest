@@ -1,7 +1,5 @@
-import React, { ReactComponentElement, ReactElement, ReactNode } from "react";
 import { Card } from "../types/card";
-import { randomDate, randomId } from "../utils";
-import { ReactComponent as CoinLogo } from "../assets/images/coinlogo.svg"
+import { randomDate, randomId, randomStatus } from "../utils";
 
 const sampleCard: Card = {
   id: 71,
@@ -30,12 +28,14 @@ const sampleCard: Card = {
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8].map((num) => {
   const id = randomId(1000);
+  const status = randomStatus() as Card['status'];
   const createdTimestamp = randomDate(new Date(2022, 1, 1), new Date());
   const updatedTimestamp = randomDate(createdTimestamp, new Date());
 
   return {
     ...sampleCard,
     id,
+    status,
     createdTimestamp: createdTimestamp.toISOString(),
     updatedTimestamp: updatedTimestamp.toISOString(),
   };
@@ -60,7 +60,7 @@ export const getCoinPrice = (subscriptionId: number): Promise<number> => {
 export const getCoinLogo = (subscriptionId: number): Promise<string> => {
   return new Promise((resolve) => {
     setTimeout(() => {
-      return resolve('https://example.com/images/coinlogo.png')
+      return resolve("https://example.com/images/coinlogo.png");
     }, 2000);
-  })
-}
+  });
+};
