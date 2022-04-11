@@ -23,7 +23,7 @@ export const OracleCard: React.FC<CardProps> = ({
   useEffect(() => {
     getCoinPrice(id).then((price) => setCoinPrice(price));
     getCoinLogo(id).then((logo) => setCoinLogo(logo));
-  }, []);
+  }, [id]);
 
   return (
     <div
