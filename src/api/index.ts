@@ -61,6 +61,6 @@ export const getCoinLogo = (subscriptionId: number): Promise<string> => {
   return new Promise((resolve) => {
     setTimeout(() => {
       return resolve("https://example.com/images/coinlogo.png");
-    }, 2000);
+    }, 2300);
   });
 };
